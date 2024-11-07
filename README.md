@@ -1,5 +1,5 @@
 # UnderTaleModTool Enhanced Tools
-A Collection of Modified Scripts that aim to Enhance the output of older Scripts
+A Collection of Modified Scripts that aim to Enhance the output of the older Scripts they were built off of
 
 Included are:
 
