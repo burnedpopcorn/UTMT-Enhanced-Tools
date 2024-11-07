@@ -4,7 +4,7 @@ This is an Improved version of ExportAssetsOrder, which was Originally Made by G
 
 Which was improved by me, burnedpopcorn180
 
-> This Script Should work for both UTMT and UnderAnalyzer (GUI), although UnderAnalyzer has yet to be tested
+> This Script works for both UTMT and UnderAnalyzer (GUI)
 
 BetterExportAssetsOrder Changes:
 - Made output text file more readable
