@@ -1,5 +1,5 @@
 # Export2GMS1FIXED
-> Currently at v1.0
+> Currently at v1.1
 
 This is a vastly improved version of CST1229's Fixed version, which is a Fixed version of cubeww's original GMS1 Decompiler Script
 
@@ -9,7 +9,7 @@ Export2GMS1FIXED Changes:
 - Added ability to log scripts and objects that failed to decompile to a text file
 - Script now Forces User to load a data.win file first, instead of allowing none to be loaded
 		  
-> [!NOTE]
-> UnderAnalyzer is currently NOT Supported with this Script
+> [!IMPORTANT]
+> For Use in UTMT, download Version 1.0
 >
-> Only use UnderTaleModTool with this Script
+> For Use in UnderAnalyzer, download Version 1.1
