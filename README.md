@@ -6,4 +6,5 @@ Included are:
 - GameMaker Studio 1 Decompiler
 - Better ExportAssetsOrder Script
 
-Credits are found in the're respective READMEs
+Info and Credits are found in the're respective READMEs
+So check them out
