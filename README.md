@@ -11,7 +11,7 @@ Included are:
 (Works with both UTMT and UnderAnalyzer)
 - [Better ExportAssetsOrder Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportAssetsOrder)
 
-(Works with both UTMT and UnderAnalyzer)
+(Separate UTMT and UnderAnalyzer Versions are Available)
 
 > Info and Credits are found in the're respective READMEs
 > 
