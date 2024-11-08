@@ -8,10 +8,10 @@ Included are:
 (Only works with UnderAnalyzer)
 - [GameMaker Studio 1 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Export2GMS1FIXED)
 
-(Works with both UTMT and UnderAnalyzer)
+(Separate UTMT and UnderAnalyzer Versions are Available)
 - [Better ExportAssetsOrder Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportAssetsOrder)
 
-(Separate UTMT and UnderAnalyzer Versions are Available)
+(Works with both UTMT and UnderAnalyzer)
 
 > Info and Credits are found in the're respective READMEs
 > 
