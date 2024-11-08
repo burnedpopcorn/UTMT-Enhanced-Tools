@@ -2,6 +2,8 @@
 
 This is an improved version of loypoll's original GMS2 Decompiler Script
 > This is based off of loypoll's UnderAnalyzer Decompiler
+>
+> And it ONLY WORKS with UnderAnalyzer, so don't try UTMT
 
 GMS2_Decompiler_FIXED Changes:
 - Start-up Greetings and Credits Pop-Up
