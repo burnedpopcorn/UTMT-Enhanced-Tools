@@ -16,8 +16,6 @@ BetterExportAssetsOrder Changes:
 - Changed Name of Log Text File (because I can)
 
 > [!IMPORTANT]
-> This Script works for both UTMT and UnderAnalyzer
->
 > Download ```BetterExportAssetsOrder.csx``` for the Script
 
 # Differences
