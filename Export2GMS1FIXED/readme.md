@@ -1,5 +1,4 @@
 # Export2GMS1FIXED
-> Currently at v1.1
 
 This is a vastly improved version of CST1229's Fixed version, which is a Fixed version of cubeww's original GMS1 Decompiler Script
 
@@ -10,6 +9,6 @@ Export2GMS1FIXED Changes:
 - Script now Forces User to load a data.win file first, instead of allowing none to be loaded
 		  
 > [!IMPORTANT]
-> For Use in UTMT, download Version 1.0
+> For Use in UTMT, download ```Export2GMS1FIXED_UTMT.csx```
 >
-> For Use in UnderAnalyzer, download Version 1.1
+> For Use in UnderAnalyzer, download ```Export2GMS1FIXED_UA.csx```
