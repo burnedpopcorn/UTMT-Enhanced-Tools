@@ -10,6 +10,7 @@
 			throw an exception, and will still allow decompilation to finish
 	  - Lists any encountered null sprite/tileset in the error text log
 	
+	NOTE THAT THIS IS THE UNDERANALYZER VERSION
 */
 
 using System;
@@ -35,7 +36,7 @@ using Underanalyzer;
 using UndertaleModTool;
 
 // PROMOTION!
-ScriptMessage("Welcome to the GMS2 Decompiler FIXED!\n\nOriginally made by loypoll\nFixed and Improved by burnedpopcorn180");
+ScriptMessage("Welcome to the GMS2 Decompiler FIXED!\n\nOriginally made by loypoll\nFixed and Improved by burnedpopcorn180\n\n---UnderAnalyzer Version---");
 
 // configuration
 var ignore = new List<string>() // ignore certain assets from attempting to decompile
