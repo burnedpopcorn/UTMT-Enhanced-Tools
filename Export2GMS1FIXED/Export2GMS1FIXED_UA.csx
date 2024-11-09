@@ -23,15 +23,15 @@
 		
 		Export2GMS1FIXED (UnderAnalyzer) Changes:
 		  - Script now uses UnderAnalyzer instead of UTMT
-		  (USE v1.0 IF YOU USE UTMT)
 		
 		Export2GMS1FIXED Changes:
 		  - Fixed Script being unable to further Decompile the project if a single script/object failed to
 		  - Script now asks if User wants to delete old decompilation project and continue if a previous attempt to decompile was detected
 		  - Added ability to log scripts and objects that failed to decompile to a text file
 		  - Script now Forces User to load a data.win file first, instead of allowing none to be loaded
-		  
-		
+
+		THIS VERSION DOES NOT HAVE UTMT SUPPORT
+		If you want to use UTMT, download the UTMT version of this script in my Github Repo
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
 */
 
