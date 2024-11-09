@@ -27,8 +27,9 @@
 		  - Added ability to log scripts and objects that failed to decompile to a text file
 		  - Script now Forces User to load a data.win file first, instead of allowing none to be loaded
 		  
-		Note that UnderAnalyzer is currently NOT Supported
+		Note that is version does not support UnderAnalyzer
 		Only use UnderTaleModTool with this Script
+		If you want to use UA, download the UA version from my Github
 		
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
 */
