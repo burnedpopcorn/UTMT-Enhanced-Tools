@@ -15,6 +15,11 @@ BetterExportAssetsOrder Changes:
   - And if a Category has no assets, it will mention that none have been found for it
 - Changed Name of Log Text File (because I can)
 
+> [!IMPORTANT]
+> This Script works for both UTMT and UnderAnalyzer
+>
+> Download ```BetterExportAssetsOrder.csx``` for the Script
+
 # Differences
 
 > Excerpt from BetterExportAssetsOrder's Output
