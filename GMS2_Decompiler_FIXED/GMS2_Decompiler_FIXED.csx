@@ -1,5 +1,5 @@
 ﻿/*
-	UnderAnalyzer Decompiler (Fixed)
+	GMS2_Decompiler_FIXED
 	
 	Original Decompiler by loypoll
 	Fixed and Improved by burnedpopcorn180
@@ -35,7 +35,7 @@ using Underanalyzer;
 using UndertaleModTool;
 
 // PROMOTION!
-ScriptMessage("Welcome to the UnderAnalyzer Decompiler!\n\nOriginally made by loypoll\nFixed and Improved by burnedpopcorn180");
+ScriptMessage("Welcome to the GMS2 Decompiler FIXED!\n\nOriginally made by loypoll\nFixed and Improved by burnedpopcorn180");
 
 // configuration
 var ignore = new List<string>() // ignore certain assets from attempting to decompile
