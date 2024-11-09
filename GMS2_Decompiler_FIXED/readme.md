@@ -8,6 +8,7 @@ GMS2_Decompiler_FIXED Changes:
 - Sprites and TileSets that have no associated image attached to them no longer throw an exception, and will still allow decompilation to finish
 - Lists any encountered null sprite/tileset in the error text log
 
-> For Use with UnderAnalyzer, download GMS2_Decompiler_FIXED_UA
+> [!IMPORTANT]
+> For Use in UTMT, download ```GMS2_Decompiler_FIXED_UTMT.csx```
 >
-> For Use with UTMT, download GMS2_Decompiler_FIXED_UTMT
+> For Use in UnderAnalyzer, download ```GMS2_Decompiler_FIXED_UA.csx```
