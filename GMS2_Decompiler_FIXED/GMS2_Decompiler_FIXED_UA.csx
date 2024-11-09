@@ -1,5 +1,5 @@
 ﻿/*
-	GMS2_Decompiler_FIXED
+	GMS2_Decompiler_FIXED_UA
 	
 	Original Decompiler by loypoll
 	Fixed and Improved by burnedpopcorn180
