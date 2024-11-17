@@ -17,3 +17,11 @@ Included are:
 > Info and Credits are found in the're respective READMEs
 > 
 > So check them out
+
+
+These Scripts are all bundled into my Decompiling Pack: 
+https://mega.nz/file/rnRDVTja#ifevfb09G3oskg33R8Rsai34A6Hxo5SQtYfv21gS8Wc
+
+which contains everything you need to start decompiling ANY GameMaker Game, GMS1 or 2
+
+Read the About.txt for info and credits
