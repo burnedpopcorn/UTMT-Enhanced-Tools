@@ -7,7 +7,7 @@ But it needed Improvements, since it could only decompile the Unknown Enums
 also, this is a UnderAnalyzer only Script, because only UnderAnaylzer uses Enums like Unknown Enums
 	
  Changes:
-- Added ability to detect and add e__VW and e__BG Enums (Usually used for GMS1 Compatiablity Scripts)
+- Added ability to detect and add ```e__VW``` and ```e__BG``` Enums (Usually used for GMS1 Compatiablity Scripts)
 - Notify user to turn off Create Enum Declarations in Settings (THIS IS IMPORTANT FOR DECOMPILATIONS)
 - Removed ability to report Decompiling Errors, because it often didn't mean anything, and just flooded your screen with useless errors
 
