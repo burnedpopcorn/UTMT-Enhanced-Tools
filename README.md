@@ -24,6 +24,8 @@ Included are:
 
 ### Decompiling Pack (V3)
 > Is now OUTDATED, and doesn't contain all Scripts from this Repository
+>
+> It will be Updated eventually
 
 These Scripts are all bundled into my Decompiling Pack: 
 https://mega.nz/file/rnRDVTja#ifevfb09G3oskg33R8Rsai34A6Hxo5SQtYfv21gS8Wc
