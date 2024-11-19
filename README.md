@@ -23,7 +23,7 @@ Included are:
 > So check them out
 
 ### Decompiling Pack (V3)
-> Is now OUTDATED, and doesn't contain all Scripts from this Repository
+> Is now OUTDATED (as of 11/19/24), and doesn't contain all Scripts from this Repository
 >
 > It will be Updated eventually
 
