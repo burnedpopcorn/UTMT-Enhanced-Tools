@@ -36,3 +36,4 @@ Read the About.txt for info and credits
 
 ### also
 dm me on discord (burnedpopcorn180) if you encounter any issues
+> With the provided Scripts, NOT with a Decomp
