@@ -16,7 +16,7 @@ Included are:
 
 - [Better ExportGMS2Enums Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportGMS2Enums)
 
-(Currently only works for decompiling projects with UnderAnalyzer)
+(Only works UA, since UA is the only one that needs it)
 
 > Info and Credits are found in the're respective READMEs
 > 
