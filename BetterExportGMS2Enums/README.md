@@ -4,7 +4,7 @@ Improved by burnedpopcorn
 I actually don't know who made this original file
 But it needed Improvements, since it could only decompile the Unknown Enums
 	
-also, this is a UnderAnalyzer only Script, because only UnderAnaylzer uses Enums like Unknown Enums
+also, this is a UnderAnalyzer only Script, because only UnderAnalyzer uses Enums like Unknown Enums
 	
  Changes:
 - Added ability to detect and add ```e__VW``` and ```e__BG``` Enums (Usually used for GMS1 Compatiablity Scripts)
