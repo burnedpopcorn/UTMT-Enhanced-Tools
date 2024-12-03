@@ -6,7 +6,7 @@ Included are:
 
 - [(NEW) GameMaker Studio 2 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Ultimate_GMS2_Decompiler)
 
-(Currently UnderAnalyzer Only)
+(Separate UTMT and UnderAnalyzer Versions are Available)
 - [GameMaker Studio 1 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Export2GMS1FIXED)
 
 (Separate UTMT and UnderAnalyzer Versions are Available)
