@@ -4,6 +4,7 @@ The Ultimate GMS2 Decompiler!
 (Uses GMS2_Decompiler_FIXED as a Base)
 
 Original Script by loypoll
+
 Major Improvements and Fixes by me
 
 Ultimate_GMS2_Decompiler_UA Features:
