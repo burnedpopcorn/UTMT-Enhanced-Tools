@@ -4,7 +4,7 @@ A Collection of Modified Scripts that aim to Enhance the output of the older Scr
 
 Included are:
 
-- [GameMaker Studio 2 Decompiler UNDER CONSTRUCTION](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/)
+- [(NEW) GameMaker Studio 2 Decompiler UNDER CONSTRUCTION](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/)
 
 (Separate UTMT and UnderAnalyzer Versions are Available)
 - [GameMaker Studio 1 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Export2GMS1FIXED)
@@ -12,12 +12,11 @@ Included are:
 (Separate UTMT and UnderAnalyzer Versions are Available)
 - [Better ExportAssetsOrder Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportAssetsOrder)
 
-(Works with both UTMT and UnderAnalyzer)
+OLD TOOLS:
 
 - [DEPRECATED - GameMaker Studio 2 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/blob/main/GMS2_Decompiler_FIXED)
 - [DEPRECATED - Better ExportGMS2Enums Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportGMS2Enums)
 
-(Only works UA, since UA is the only one that needs it)
 
 > Info and Credits are found in the're respective READMEs
 > 
