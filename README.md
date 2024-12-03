@@ -4,7 +4,7 @@ A Collection of Modified Scripts that aim to Enhance the output of the older Scr
 
 Included are:
 
-- [(NEW) GameMaker Studio 2 Decompiler UNDER CONSTRUCTION](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/)
+- [(NEW) GameMaker Studio 2 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Ultimate_GMS2_Decompiler)
 
 (Currently UnderAnalyzer Only)
 - [GameMaker Studio 1 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Export2GMS1FIXED)
@@ -22,13 +22,13 @@ OLD TOOLS:
 > 
 > So check them out
 
-### Decompiling Pack (V3)
-> Is now OUTDATED (as of 11/19/24), and doesn't contain all Scripts from this Repository
+### Decompiling Pack (V4)
+> Is now OUTDATED (as of 12/2/24), and doesn't contain all Scripts from this Repository
 >
 > It will be Updated eventually
 
 These Scripts are all bundled into my Decompiling Pack: 
-https://mega.nz/file/rnRDVTja#ifevfb09G3oskg33R8Rsai34A6Hxo5SQtYfv21gS8Wc
+https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/releases/tag/v4
 
 which contains everything you need to start decompiling ANY GameMaker Game, GMS1 or 2
 
