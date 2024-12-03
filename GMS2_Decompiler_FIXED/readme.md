@@ -1,7 +1,11 @@
 # GMS2_Decompiler_FIXED
 
 This is an improved version of loypoll's original GMS2 Decompiler Script
-> This is based off of loypoll's UnderAnalyzer Decompiler
+
+> [!IMPORTANT]
+> This Script is now DEPRECATED, in favor of [Ultimate_GMS2_Decompiler.csx](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Ultimate_GMS2_Decompiler)
+>
+> It is Strongly Recommended that you upgrade
 
 GMS2_Decompiler_FIXED Changes:
 - Start-up Greetings and Credits Pop-Up
