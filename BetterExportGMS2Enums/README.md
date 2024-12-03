@@ -1,7 +1,13 @@
 ## BetterExportGMS2Enums
 Improved by burnedpopcorn
 
+> [!IMPORTANT]
+> This Script is now DEPRECATED, because it has now been merged with [Ultimate_GMS2_Decompiler.csx](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Ultimate_GMS2_Decompiler)
+>
+> This Script is no longer needed, as the New Script has all of these Features included
+
 I actually don't know who made this original file
+
 But it needed Improvements, since it could only decompile the Unknown Enums
 	
 also, this is a UnderAnalyzer only Script, because only UnderAnalyzer uses Enums like Unknown Enums
