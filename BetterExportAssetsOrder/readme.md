@@ -2,6 +2,11 @@
 
 This is an Improved version of ExportAssetsOrder, which was Originally Made by Grossley and colinator27 for use in official UndertaleModTool Releases
 
+> [!IMPORTANT]
+> This Script has been merged with [Ultimate_GMS2_Decompiler.csx](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Ultimate_GMS2_Decompiler)
+>
+> But will not be entirely deprecated, as it can work with the GMS1 Decompiler
+
 Which was improved by me, burnedpopcorn180
 
 > This Script works for both UTMT and UnderAnalyzer (GUI)
