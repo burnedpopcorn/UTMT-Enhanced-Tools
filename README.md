@@ -12,6 +12,8 @@ Included are:
 (Separate UTMT and UnderAnalyzer Versions are Available)
 - [Better ExportAssetsOrder Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportAssetsOrder)
 
+(Works on both UTMT and UnderAnalyzer)
+
 OLD TOOLS (Not Included in the Decomp Pack):
 
 - [DEPRECATED - GameMaker Studio 2 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/blob/main/GMS2_Decompiler_FIXED)
