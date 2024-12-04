@@ -9,8 +9,10 @@ Major Improvements and Fixes by me
 
 ### Ultimate_GMS2_Decompiler Features:
 - Enum Declarations are Automatically Extracted and added into the Project, no further action is required
-    - (Enum Declaration Feature is only for UA, because UTMT doesn't use them)
+    - (Enum Declaration Feature is only for UA and UTMTCE, because UTMT doesn't use them)
 - Asset_Order, a Note within the Project, is available for those that want an absolute PERFECT Decompilation, which can be used to find an Asset's ID, so you can replace any instance of it with the Asset Name
+- Added Support for both UTMT and UTMTCE
+    - (UTMTCE ONLY) state.throw and state.parry were globally replaced with state.parry_ and state.throw_ as GameMaker would think the Enum Declaration was calling for parry() and throw() functions
 
 These Changes incorperate both
 BetterExportGMS2Enums.csx and BetterExportAssetsOrder.csx
@@ -25,3 +27,7 @@ making both obsolete
 > Download ```Ultimate_GMS2_Decompiler_UA.csx``` for the UnderAnalyzer Version of the Script
 >
 > Download ```Ultimate_GMS2_Decompiler_UTMT.csx``` for the UTMT Version of the Script
+>
+> Download ```Ultimate_GMS2_Decompiler_UTMTCE.csx``` for the UTMTCE Version of the Script
+>
+> USE UTMTCE v5.5 FROM GAMEBANANA (GITHUB ARTIFACTS VERSION IS BROKEN)
