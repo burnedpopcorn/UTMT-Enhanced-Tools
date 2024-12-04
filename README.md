@@ -12,7 +12,7 @@ Included are:
 (Separate UTMT and UnderAnalyzer Versions are Available)
 - [Better ExportAssetsOrder Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportAssetsOrder)
 
-OLD TOOLS:
+OLD TOOLS (Not Included in the Decomp Pack):
 
 - [DEPRECATED - GameMaker Studio 2 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/blob/main/GMS2_Decompiler_FIXED)
 - [DEPRECATED - Better ExportGMS2Enums Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportGMS2Enums)
@@ -22,14 +22,12 @@ OLD TOOLS:
 > 
 > So check them out
 
-### Decompiling Pack (V4)
-> Is now OUTDATED (as of 12/2/24), and doesn't contain all Scripts from this Repository
->
-> It will be Updated eventually
+### Decompiling Pack v5
+> Is the Latest as of (12/3/24)
 
 These Scripts are all bundled into my Decompiling Pack: 
 
-https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/releases/tag/v4
+https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/releases/tag/v5
 
 which contains everything you need to start decompiling ANY GameMaker Game, GMS1 or 2
 
