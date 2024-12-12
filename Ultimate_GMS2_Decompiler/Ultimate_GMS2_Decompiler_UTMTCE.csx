@@ -1142,7 +1142,7 @@ void DumpOptions()
 
 	var exportWindowsOptions = new GMWindowsOptions();
 	exportWindowsOptions.option_windows_display_name = Data.GeneralInfo.DisplayName.Content;
-	exportWindowsOptions.option_windows_copyright_info = "Decompiler script by loypoll";
+	exportWindowsOptions.option_windows_copyright_info = "Decompiled using Ultimate_GMS2_Decompiler_UTMTCE";
 
 	exportWindowsOptions.option_windows_start_fullscreen = (Data.Options.Info.HasFlag(UndertaleOptions.OptionsFlags.FullScreen));
 	exportWindowsOptions.option_windows_interpolate_pixels = (Data.Options.Info.HasFlag(UndertaleOptions.OptionsFlags.InterpolatePixels));
@@ -1828,7 +1828,13 @@ void DumpRoom(UndertaleRoom room)
 									imageSpeed = i.ImageSpeed,
 									imageIndex = i.ImageIndex
 								};
-								string objname = i.ObjectDefinition.Name.Content;
+								string objname = "";
+								
+								try {
+									objname = i.ObjectDefinition.Name.Content;
+								} catch {
+									errorList.Add($"{exportedRoom.name} - Object Instance ({i.InstanceID}) is null");
+								}
 								
 								// dump creation code
 								string code = "";
