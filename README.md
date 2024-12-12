@@ -24,12 +24,12 @@ Included are:
 > 
 > So check them out
 
-## Decompiling Pack v5
-> Is the Latest as of (12/3/24)
+## Decompiling Pack v7
+> Is the Latest as of (12/11/24)
 
 These Scripts are all bundled into my Decompiling Pack: 
 
-https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/releases/tag/v5
+https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/releases/tag/v7
 
 which contains everything you need to start decompiling ANY GameMaker Game, GMS1 or 2
 
