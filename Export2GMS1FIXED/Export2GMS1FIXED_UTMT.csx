@@ -22,6 +22,8 @@
 		Original Fixed Version by CST1229
 		
 		Export2GMS1FIXED Changes:
+		  - (NEW) Added support for decompiling Shaders
+
 		  - Fixed Script being unable to further Decompile the project if a single script/object failed to
 		  - Script now asks if User wants to delete old decompilation project and continue if a previous attempt to decompile was detected
 		  - Added ability to log scripts and objects that failed to decompile to a text file
@@ -87,7 +89,8 @@ var resourceNum = Data.Sprites.Count +
     Data.Scripts.Count + 
     Data.Fonts.Count + 
     Data.Paths.Count + 
-    Data.Timelines.Count;
+    Data.Timelines.Count +
+	Data.Shaders.Count; // new one
 
 // Export sprites
 await ExportSprites();
@@ -115,6 +118,9 @@ await ExportPaths();
 
 // Export timelines
 await ExportTimelines();
+
+// (NEW) Export shaders
+await ExportShaders();
 
 // Generate project file
 GenerateProjectFile();
@@ -587,6 +593,9 @@ void ExportSound(UndertaleSound sound)
     // Save sound files
     if (sound.AudioFile != null)
         File.WriteAllBytes(projFolder + "/sound/audio/" + sound.File.Content, sound.AudioFile.Data);
+	// if sound file is external, add them
+	else if (File.Exists($"{Path.GetDirectoryName(FilePath)}\\" + sound.File.Content))
+		File.Copy($"{Path.GetDirectoryName(FilePath)}\\" + sound.File.Content, projFolder + "/sound/audio/" + sound.File.Content, true);
 }
 
 // --------------- Export Script ---------------
@@ -750,6 +759,31 @@ void ExportTimeline(UndertaleTimeline timeline)
     File.WriteAllText(projFolder + "/timelines/" + timeline.Name.Content + ".timeline.gmx", gmx.ToString() + eol);
 }
 
+// --------------- Export Shaders ---------------
+async Task ExportShaders()
+{
+    Directory.CreateDirectory(projFolder + "/shaders");
+    await Task.Run(() => Parallel.ForEach(Data.Shaders, ExportShader));
+}
+void ExportShader(UndertaleShader shader)
+{
+	// Vertex and Fragment shit
+	var vertex = shader.GLSL_ES_Vertex.Content;
+	var fragment = shader.GLSL_ES_Fragment.Content;
+	
+	// to avoid declaring useless shit
+	if (vertex != null && fragment != null)
+	{
+		string splitter = "#define _YY_GLSLES_ 1\n";
+		if (vertex.Contains(splitter))
+			vertex = vertex.Substring(vertex.IndexOf(splitter) + splitter.Length);
+		if (fragment.Contains(splitter))
+			fragment = fragment.Substring(fragment.IndexOf(splitter) + splitter.Length);
+	}
+	
+    UpdateProgressBar(null, $"Exporting Script: {shader.Name.Content}", progress++, resourceNum);
+	File.WriteAllText(projFolder + "/shaders/" + shader.Name.Content + ".shader", vertex + "\n//######################_==_YOYO_SHADER_MARKER_==_######################@~//\n" + fragment);
+}
 
 // --------------- Generate project file ---------------
 void GenerateProjectFile()
@@ -771,6 +805,8 @@ void GenerateProjectFile()
     WriteIndexes<UndertaleRoom>(gmx.Element("assets"), "rooms", "rooms", Data.Rooms, "room", "rooms\\");
     WriteIndexes<UndertalePath>(gmx.Element("assets"), "paths", "paths", Data.Paths, "path", "paths\\");
     WriteIndexes<UndertaleTimeline>(gmx.Element("assets"), "timelines", "timelines", Data.Timelines, "timeline", "timelines\\");
+	// for shader support
+	WriteIndexes<UndertaleShader>(gmx.Element("assets"), "shaders", "shaders", Data.Shaders, "shader", "shaders\\", ".shader");
 
     File.WriteAllText(projFolder + GameName + ".project.gmx", gmx.ToString() + eol);
 }
