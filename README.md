@@ -25,7 +25,7 @@ These are unnecessary, as the New GMS2 Decompiler has made these obsolete
 > 
 > So check them out
 
-## Decompiling Pack v7
+## Decompiling Pack v8
 > Is the Latest as of (12/15/24)
 
 These Scripts are all bundled into my Decompiling Pack: 
