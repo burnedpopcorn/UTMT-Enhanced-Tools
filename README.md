@@ -16,6 +16,7 @@ Included are:
 
 ### OLD TOOLS (Not Included in the Decomp Pack):
 
+These are unnecessary, as the New GMS2 Decompiler has made these obsolete
 - [DEPRECATED - GameMaker Studio 2 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/blob/main/GMS2_Decompiler_FIXED)
 - [DEPRECATED - Better ExportGMS2Enums Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportGMS2Enums)
 
