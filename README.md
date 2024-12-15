@@ -9,7 +9,7 @@ Included are:
 (UnderAnalyzer, UTMT, AND UTMTCE Versions are Available)
 - [GameMaker Studio 1 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Export2GMS1FIXED)
 
-(Separate UTMT and UnderAnalyzer Versions are Available)
+(UnderAnalyzer, UTMT, AND UTMTCE Versions are Available)
 - [Better ExportAssetsOrder Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportAssetsOrder)
 
 (Works on both UTMT and UnderAnalyzer)
