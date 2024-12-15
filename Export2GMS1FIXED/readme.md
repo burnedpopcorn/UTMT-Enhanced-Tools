@@ -12,6 +12,10 @@ Export2GMS1FIXED Changes:
 - Script now Forces User to load a data.win file first, instead of allowing none to be loaded
 		  
 > [!IMPORTANT]
-> For Use in UTMT, download ```Export2GMS1FIXED_UTMT.csx```
+> Download ```Ultimate_GMS2_Decompiler_UA.csx``` for the UnderAnalyzer Version of the Script
 >
-> For Use in UnderAnalyzer, download ```Export2GMS1FIXED_UA.csx```
+> Download ```Ultimate_GMS2_Decompiler_UTMT.csx``` for the UTMT Version of the Script
+>
+> Download ```Ultimate_GMS2_Decompiler_UTMTCE.csx``` for the UTMTCE Version of the Script
+>
+> USE UTMTCE v5.5 FROM GAMEBANANA (GITHUB ARTIFACTS VERSION IS BROKEN)
