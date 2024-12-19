@@ -14,6 +14,10 @@ Included are:
 
 (Works Universally across all UTMT Variants)
 
+- [(NEW) GMS2 YYMPS Packager Decompiler and Maker](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/blob/main/Export2YYMPS)
+
+(Currently only supported on UnderAnalyzer)
+
 ### OLD TOOLS (Not Included in the Decomp Pack):
 
 These are unnecessary, as the New GMS2 Decompiler has made these obsolete
