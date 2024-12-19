@@ -1,4 +1,4 @@
-Export2YYMPS
+# Export2YYMPS
 
 The Only Decompiling Script that Exports as a YYMPS Package
 (Uses Ultimate_GMS2_Decompiler as a Base)
@@ -17,6 +17,6 @@ YYMPS Exporting Functionality by me
 - Adding TileSets/Backgrounds causes generated YYMPS package to fail loading
 
 > [!IMPORTANT]
-> Download ```Ultimate_GMS2_Decompiler_UA.csx``` for the UnderAnalyzer Version of the Script
+> Download ```Export2YYMPS_UA.csx``` for the UnderAnalyzer Version of the Script
 >
 > UTMT (and UTMTCE) Versions are planned, but have not been made yet
