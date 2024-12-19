@@ -12,7 +12,7 @@ Included are:
 (UnderAnalyzer, UTMT, AND UTMTCE Versions are Available)
 - [Better ExportAssetsOrder Script](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/BetterExportAssetsOrder)
 
-(Works on both UTMT and UnderAnalyzer)
+(Works Universally across all UTMT Variants)
 
 ### OLD TOOLS (Not Included in the Decomp Pack):
 
