@@ -1267,17 +1267,29 @@ void DumpSprite(UndertaleSprite sprite)
 	// burned here
 	// try + catch to detect sprites with no image
 	// and to avoid an exception
+	Bitmap nullimg;
 	try {
-	if (sprite.Textures.Count > 0)
-	{
-		exportedSprite.width = (int)sprite.Textures[0].Texture.BoundingWidth;
-		exportedSprite.height = (int)sprite.Textures[0].Texture.BoundingHeight;
-	}
+		if (sprite.Textures.Count > 0)
+		{
+			exportedSprite.width = (int)sprite.Textures[0].Texture.BoundingWidth;
+			exportedSprite.height = (int)sprite.Textures[0].Texture.BoundingHeight;
+		}
 	}
 	catch (Exception e) {
-	// if no image with sprite, set to 0
-		exportedSprite.width = 0;
-		exportedSprite.height = 0;
+	// if no image with sprite
+		exportedSprite.width = 1;
+		exportedSprite.height = 1;
+		
+		// make blank 1x1 image
+		
+		string _compositeGuid = Guid.NewGuid().ToString();
+		string lGuid = Guid.NewGuid().ToString();
+		string lPath = rootPath + spritePath + "layers/" + _compositeGuid + "/";
+		Directory.CreateDirectory(lPath);
+		
+		nullimg = new Bitmap(exportedSprite.width, exportedSprite.height);
+		TextureWorker.SaveImageToFile(rootPath + spritePath + _compositeGuid + ".png", nullimg, false);
+		TextureWorker.SaveImageToFile(lPath + lGuid + ".png", nullimg);
 		
 		// Log Null Sprite
 		errorList.Add($"{exportedSprite.name} - Null Sprite: No associated Image found");

@@ -1081,17 +1081,29 @@ void DumpSprite(UndertaleSprite sprite)
 	// burned here
 	// try + catch to detect sprites with no image
 	// and to avoid an exception
+	Bitmap nullimg;
 	try {
-	if (sprite.Textures.Count > 0)
-	{
-		exportedSprite.width = (int)sprite.Textures[0].Texture.BoundingWidth;
-		exportedSprite.height = (int)sprite.Textures[0].Texture.BoundingHeight;
-	}
+		if (sprite.Textures.Count > 0)
+		{
+			exportedSprite.width = (int)sprite.Textures[0].Texture.BoundingWidth;
+			exportedSprite.height = (int)sprite.Textures[0].Texture.BoundingHeight;
+		}
 	}
 	catch (Exception e) {
-	// if no image with sprite, set to 0
-		exportedSprite.width = 0;
-		exportedSprite.height = 0;
+	// if no image with sprite
+		exportedSprite.width = 1;
+		exportedSprite.height = 1;
+		
+		// make blank 1x1 image
+		
+		string _compositeGuid = Guid.NewGuid().ToString();
+		string lGuid = Guid.NewGuid().ToString();
+		string lPath = rootPath + spritePath + "layers/" + _compositeGuid + "/";
+		Directory.CreateDirectory(lPath);
+		
+		nullimg = new Bitmap(exportedSprite.width, exportedSprite.height);
+		TextureWorker.SaveImageToFile(rootPath + spritePath + _compositeGuid + ".png", nullimg, false);
+		TextureWorker.SaveImageToFile(lPath + lGuid + ".png", nullimg);
 		
 		// Log Null Sprite
 		errorList.Add($"{exportedSprite.name} - Null Sprite: No associated Image found");
@@ -4948,23 +4960,18 @@ string zipPath = yympsPath + $"{exportData.name}.yymps";
 if(File.Exists(zipPath))
     File.Delete(zipPath);
 	
+		
+async Task createyymps() {
+
 // Compress to YYMPS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ZipFile.CreateFromDirectory(startPath, zipPath);
-
-// Completely Done with Decompiling
-if (errorList.Count > 0)
-{
-	File.WriteAllLinesAsync(yympsPath + "error_log.txt", errorList);
-	ScriptMessage($"Done with {errorList.Count} errors.\n{rootPath}error_log.txt\n\nA text file can be found in the data folder with logged exception messages for each error.");
-}
-else
-	ScriptMessage("Done!" + (_PJCT.Checked ? "\nThe YYMPS Package should finish Compressing after this Message\nPress OK to go to the Exported YYMPS" : ""));
 
 // delete temp directory workspace
 // its this fucked up because sometimes it fails to delete it
 // when sounds are included, as sounds take more time to decompile
 // and it attempts to delete the temp folder while still decompiling, which causes it to shit itself
 // so this indefinitely attempts to delete it, and will eventually succeed when everything is done
+// and will leave infinite loop when it has succeed, because duh
 while (true)
 {
 	try 
@@ -4974,7 +4981,20 @@ while (true)
 			break;
 	} 
 	catch {}
+	}
 }
+
+// to wait for yymps creation to fully finish
+await createyymps();
+	
+// Completely Done with Decompiling
+if (errorList.Count > 0)
+{
+	File.WriteAllLinesAsync(yympsPath + "error_log.txt", errorList);
+	ScriptMessage($"Done with {errorList.Count} errors.\n{rootPath}error_log.txt\n\nA text file can be found in the data folder with logged exception messages for each error.");
+}
+else
+	ScriptMessage("Done!\nThe YYMPS Package should finish Compressing after this Message\nPress OK to go to the Exported YYMPS");
 
 // Open File Explorer to the YYMPS Directory
 if (!_APND.Checked)
