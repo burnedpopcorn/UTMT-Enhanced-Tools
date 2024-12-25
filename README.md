@@ -2,6 +2,11 @@
 A Collection of Modified Scripts that aim to Enhance the output of the older Scripts they were built off of
 > All of these have been Modified by me to fix Issues or to Enhance them even further
 
+> [!IMPORTANT]
+> The Decompiling Pack in the Releases Tab is OUTDATED as of ```12/25/24```
+>
+> Please update the Scripts provided in the Pack with the updated Scripts in this repository, or wait for the next Decomp Pack release
+
 Included are:
 
 - [(NEW) GameMaker Studio 2 Decompiler](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/tree/main/Ultimate_GMS2_Decompiler)
@@ -30,7 +35,6 @@ These are unnecessary, as the New GMS2 Decompiler has made these obsolete
 > So check them out
 
 ## Decompiling Pack v8
-> Is the Latest as of (12/15/24)
 
 These Scripts are all bundled into my Decompiling Pack: 
 
