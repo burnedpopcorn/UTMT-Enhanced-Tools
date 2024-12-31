@@ -13,6 +13,8 @@ Major Improvements and Fixes by me
 - Asset_Order, a Note within the Project, is available for those that want an absolute PERFECT Decompilation, which can be used to find an Asset's ID, so you can replace any instance of it with the Asset Name
 - Added Support for both UTMT and UTMTCE
     - (UTMTCE ONLY) state.throw and state.parry were globally replaced with state.parry_ and state.throw_ as GameMaker would think the Enum Declaration was calling for parry() and throw() functions
+- (NEW) Added Ability to Apply TextureGroups to Sprites and Tilesets
+    - (CURRENTLY ONLY ON UA VERSION)
 
 These Changes incorperate both
 BetterExportGMS2Enums.csx and BetterExportAssetsOrder.csx
