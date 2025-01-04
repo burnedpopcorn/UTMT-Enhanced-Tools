@@ -19,7 +19,11 @@ Included are:
 
 - [(NEW) GMS2 YYMPS Packager Decompiler and Maker](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/blob/main/Export2YYMPS)
 
-(Currently only supported on UnderAnalyzer)
+(UnderAnalyzer, UTMT, AND UTMTCE Versions are Available)
+
+- [(NEW) GMFolder (Project Organization) Cloner](https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/blob/main/GMFolder_Cloner)
+
+(Is a Python 3.12 Script, not a UTMT Script)
 
 ### OLD TOOLS (Not Included in the Decomp Pack):
 
