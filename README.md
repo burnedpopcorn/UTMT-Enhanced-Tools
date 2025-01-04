@@ -3,7 +3,9 @@ A Collection of Modified Scripts that aim to Enhance the output of the older Scr
 > All of these have been Modified by me to fix Issues or to Enhance them even further
 
 > [!IMPORTANT]
-> The Decompiling Pack in the Releases Tab is the LATEST as of ```1/3/25```
+> The Decompiling Pack in the Releases Tab is OUTDATED as of ```1/4/25```
+>
+> Please update Export2GMS1FIXED_UTMTCE for the included UTMTCE install
 
 Included are:
 
