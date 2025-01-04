@@ -1041,20 +1041,6 @@ public class GMNotes : ResourceBase
 	// nothing lol
 }
 
-// added this thing in attempt to add a 1x1 tranparent image when sprite is null
-// but it doesn't work
-// don't remove it tho, since it is needed lol
-public Bitmap Base64ToBitmap()
-{
-    byte[] byteBuffer = Convert.FromBase64String("R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==");
-    using (MemoryStream memoryStream = new MemoryStream(byteBuffer))
-    {
-        var bmpReturn = (Bitmap) System.Drawing.Image.FromStream(memoryStream);
-        memoryStream.Close();
-        return bmpReturn;
-    }
-}
-
 #endregion
 #region GMS2 Asset Dumpers
 
@@ -2503,11 +2489,9 @@ void DumpTileset(UndertaleBackground bg)
 	catch
 	{
 		// give up immediately and make an empty image
-		// note to loy: this never worked
-		//img = new Bitmap(exportedSprite.width, exportedSprite.height);
-		
-		// this is extremely bullshit and doesn't work, but it can't be null, so...yeah
-		img = Base64ToBitmap();
+		exportedSprite.width = 1;
+		exportedSprite.height = 1;
+		img = new Bitmap(exportedSprite.width, exportedSprite.height);
 	}
 	
 	// try + catch : working sprites will save to image, while null sprites will do nothing

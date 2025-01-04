@@ -13,10 +13,11 @@ YYMPS Exporting Functionality by me
 
 - Ability to Change the YYMPS Name, ID, and Version
 
-### CURRENT ISSUES
-- Adding TileSets/Backgrounds causes generated YYMPS package to fail loading
-
 > [!IMPORTANT]
 > Download ```Export2YYMPS_UA.csx``` for the UnderAnalyzer Version of the Script
 >
-> UTMT (and UTMTCE) Versions are planned, but have not been made yet
+> Download ```Export2YYMPS_UTMT.csx``` for the UTMT Version of the Script
+>
+> Download ```Export2YYMPS_UTMTCE.csx``` for the UTMTCE Version of the Script
+>
+> Use UTMTCE v0.6 (Latest Github Artifacts)

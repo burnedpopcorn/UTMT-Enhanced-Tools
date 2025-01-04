@@ -14,7 +14,6 @@ Major Improvements and Fixes by me
 - Added Support for both UTMT and UTMTCE
     - (UTMTCE ONLY) state.throw and state.parry were globally replaced with state.parry_ and state.throw_ as GameMaker would think the Enum Declaration was calling for parry() and throw() functions
 - (NEW) Added Ability to Apply TextureGroups to Sprites and Tilesets
-    - (CURRENTLY ONLY ON UA VERSION)
 
 These Changes incorperate both
 BetterExportGMS2Enums.csx and BetterExportAssetsOrder.csx
@@ -32,4 +31,4 @@ making both obsolete
 >
 > Download ```Ultimate_GMS2_Decompiler_UTMTCE.csx``` for the UTMTCE Version of the Script
 >
-> USE UTMTCE v5.5 FROM GAMEBANANA (GITHUB ARTIFACTS VERSION IS BROKEN)
+> Use UTMTCE v0.6 (Latest Github Artifacts)

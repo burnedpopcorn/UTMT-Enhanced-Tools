@@ -1,5 +1,5 @@
 ﻿/*
-	Export2YYMPS_UA.csx
+	Export2YYMPS_UTMTCE.csx
 		Original Decompiler by loypoll
 			Modified to a YYMPS Decompiler by burnedpopcorn180
 			
@@ -8,7 +8,7 @@
 	
 	This Script currently has issues, but works for the most part
 	
-	NOTE THAT THIS IS THE UNDERANALYZER VERSION
+	NOTE THAT THIS IS THE UTMTCE VERSION
 */
 
 using System;
@@ -29,26 +29,16 @@ using NAudio.Vorbis;
 using NAudio.Wave;
 using System.Xml;
 using System.Xml.Serialization;
-using Underanalyzer.Decompiler;
-using Underanalyzer;
+using UndertaleModLib.Decompiler;
 using UndertaleModTool;
-// For Enum Extraction
-using Underanalyzer.Decompiler.AST;
-using Underanalyzer.Decompiler.GameSpecific;
-using Underanalyzer.Decompiler.ControlFlow;
 using System.Collections.Generic;
 // for YYMPS Compression
 using System.IO.Compression;
+// for latest UTMTCE
+using ImageMagick;
 
 // PROMOTION!
-ScriptMessage("Welcome to Export2YYMPS.csx!\n\nOriginal GMS2 Decompiler made by loypoll\nYYMPS Exporter by burnedpopcorn180\n\n        ---UnderAnalyzer Version---");
-
-// DO NOT DECLARE ENUMS FOR THE LOVE OF ALL THAT IS HOLY
-if (Data.ToolInfo.DecompilerSettings.CreateEnumDeclarations == true) {
-	if (!ScriptQuestion("The 'Create Enum Declarations' Setting is ENABLED\nDecompiling with this Enabled will almost certainly break any code\n\nContinue Anyways?")) {
-		return;
-	}
-}
+ScriptMessage("Welcome to Export2YYMPS.csx!\n\nOriginal GMS2 Decompiler made by loypoll\nYYMPS Exporter by burnedpopcorn180\n\n        ---UTMTCE Version---");
 
 // configuration
 var ignore = new List<string>() // ignore certain assets from attempting to decompile
@@ -1065,7 +1055,7 @@ void DumpSprite(UndertaleSprite sprite)
 	// burned here
 	// try + catch to detect sprites with no image
 	// and to avoid an exception
-	Bitmap nullimg;
+	IMagickImage<byte> nullimg;
 	try {
 		if (sprite.Textures.Count > 0)
 		{
@@ -1085,9 +1075,10 @@ void DumpSprite(UndertaleSprite sprite)
 		string lPath = rootPath + spritePath + "layers/" + _compositeGuid + "/";
 		Directory.CreateDirectory(lPath);
 		
-		nullimg = new Bitmap(exportedSprite.width, exportedSprite.height);
-		TextureWorker.SaveImageToFile(rootPath + spritePath + _compositeGuid + ".png", nullimg, false);
-		TextureWorker.SaveImageToFile(lPath + lGuid + ".png", nullimg);
+		// goddamn it
+		nullimg = new MagickImage(MagickColors.White, exportedSprite.width, exportedSprite.height);
+		TextureWorker.SaveImageToFile(nullimg, rootPath + spritePath + _compositeGuid + ".png");
+		TextureWorker.SaveImageToFile(nullimg, lPath + lGuid + ".png");
 		
 		// Log Null Sprite
 		errorList.Add($"{exportedSprite.name} - Null Sprite: No associated Image found");
@@ -1211,7 +1202,7 @@ void DumpSprite(UndertaleSprite sprite)
 			// extract images
 			if (frame.Texture != null)
 			{
-				Bitmap img;
+				IMagickImage<byte> img;
 				try
 				{
 					// bail if it's SWF or SPINE
@@ -1228,10 +1219,10 @@ void DumpSprite(UndertaleSprite sprite)
 				catch
 				{
 					// give up immediately and make an empty image
-					img = new Bitmap(exportedSprite.width, exportedSprite.height);
+					img = new MagickImage(MagickColors.White, exportedSprite.width, exportedSprite.height);
 				}
-				TextureWorker.SaveImageToFile(rootPath + spritePath + compositeGuid + ".png", img, false);
-				TextureWorker.SaveImageToFile(layersPath + layerGuid + ".png", img);
+				TextureWorker.SaveImageToFile(img, rootPath + spritePath + compositeGuid + ".png");
+				TextureWorker.SaveImageToFile(img, layersPath + layerGuid + ".png");
 			}
 
 			// add to frames
@@ -2345,7 +2336,7 @@ void DumpTileset(UndertaleBackground bg)
 	Directory.CreateDirectory(layersPath);
 
 	// extract images
-	Bitmap img;
+	IMagickImage<byte> img;
 	try
 	{
 		// fetch bitmap image
@@ -2356,16 +2347,16 @@ void DumpTileset(UndertaleBackground bg)
 		// give up immediately and make an empty image
 		exportedSprite.width = 1;
 		exportedSprite.height = 1;
-		img = new Bitmap(exportedSprite.width, exportedSprite.height);
+		img = new MagickImage(MagickColors.White, exportedSprite.width, exportedSprite.height);
 	}
 	
 	// try + catch : working sprites will save to image, while null sprites will do nothing
 	try {
 	// save image if it sprite is not null
-	TextureWorker.SaveImageToFile(rootPath + spritePath + compositeGuid + ".png", img, false);
-	TextureWorker.SaveImageToFile(layersPath + layerGuid + ".png", img, false);
+	TextureWorker.SaveImageToFile(img, rootPath + spritePath + compositeGuid + ".png");
+	TextureWorker.SaveImageToFile(img, layersPath + layerGuid + ".png");
 	if (Data.IsGameMaker2())
-		TextureWorker.SaveImageToFile(rootPath + tilesetPath + "output_tileset.png", img, false);
+		TextureWorker.SaveImageToFile(img, rootPath + tilesetPath + "output_tileset.png");
 	}
 	// if it is null, do nothing
 	catch (Exception e) {}
@@ -3792,7 +3783,7 @@ void DumpSpriteGMS1(UndertaleSprite sprite)
 			// extract images
 			if (frame.Texture != null)
 			{
-				Bitmap img;
+				IMagickImage<byte> img;
 				try
 				{
 					// bail if it's SWF or SPINE
@@ -3809,9 +3800,9 @@ void DumpSpriteGMS1(UndertaleSprite sprite)
 				catch
 				{
 					// give up immediately and make an empty image
-					img = new Bitmap((int)sprite.Width, (int)sprite.Height);
+					img = new MagickImage(MagickColors.White, (int)sprite.Width, (int)sprite.Height);
 				}
-				TextureWorker.SaveImageToFile(rootPath + @$"sprites\images\{sprite.Name.Content}_{i}.png", img, false);
+				TextureWorker.SaveImageToFile(img, rootPath + @$"sprites\images\{sprite.Name.Content}_{i}.png");
 			}
 		}
 		writer.WriteEndElement();
@@ -3839,8 +3830,7 @@ static string regexReplacer(this string s, int index, int length, string replace
 }
 
 // code decompiler, and turn any asset indices into equivalent asset names
-GlobalDecompileContext decompileContext = new(Data);
-Underanalyzer.Decompiler.IDecompileSettings decompilerSettings = Data.ToolInfo.DecompilerSettings;
+ThreadLocal<GlobalDecompileContext> DECOMPILE_CONTEXT = new ThreadLocal<GlobalDecompileContext>(() => new GlobalDecompileContext(Data, false));
 string decompileCode(UndertaleCode codeId)
 {
 	if (codeId == null)
@@ -3853,7 +3843,7 @@ string decompileCode(UndertaleCode codeId)
 	if (File.Exists($"{dataPath}code/{codeId.Name.Content}.gml"))
 		code = File.ReadAllText($"{dataPath}code/{codeId.Name.Content}.gml");
 	else
-		code = codeId != null ? new Underanalyzer.Decompiler.DecompileContext(decompileContext, codeId, decompilerSettings).DecompileToString(): "";
+		code = codeId != null ? Decompiler.Decompile(codeId, DECOMPILE_CONTEXT.Value): "";
 
 	// skip everything if tweak code isnt enabled
 	if (!TWEK)
@@ -4986,7 +4976,7 @@ if (!GMS1)
 
 // cleanup
 await StopUpdater();
-worker.Cleanup();
+worker.Dispose();
 HideProgressBar();
 
 // Make final YYMPS directory

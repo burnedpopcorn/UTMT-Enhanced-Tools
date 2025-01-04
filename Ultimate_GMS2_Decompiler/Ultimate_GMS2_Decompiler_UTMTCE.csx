@@ -8,6 +8,7 @@
 	  - Added Feature to automatically add UTMTCE Enum Declarations into the Project
 	  - Added Asset_Order Note, which included a List of all Asset IDs and their respective Asset
 		  to provide the ability to more easily make a perfect Decompilation of a given game
+	  - (NEW) Added Ability to Detect and Assign TextureGroups to Sprites and Tilesets
 		  
 	  - (UTMTCE ONLY) Added Feature to automatically replace states.parry and states.throw to
 		  states.parry_ and states.throw_ as to avoid GameMaker conflicts
@@ -18,8 +19,8 @@
 			throw an exception, and will still allow decompilation to finish
 	  - Lists any encountered null sprite/tileset in the error text log
 	
-	THIS SCRIPT IS ONLY COMPATIBLE WITH UTMTCE v5.5 STABLE
-	GITHUB ARTIFACT BUILDS MAY NOT WORK
+	THIS SCRIPT IS ONLY COMPATIBLE WITH UTMTCE v0.6
+	(LATEST GITHUB ARTIFACTS)
 */
 
 using System;
@@ -42,6 +43,8 @@ using System.Xml;
 using System.Xml.Serialization;
 using UndertaleModLib.Decompiler;
 using UndertaleModTool;
+// because of the new UTMT update
+using ImageMagick;
 
 // PROMOTION!
 ScriptMessage("Welcome to Ultimate_GMS2_Decompiler_UTMTCE!\n\nOriginally made by loypoll\nFixed and Improved by burnedpopcorn180\n\n---UTMTCE Version---");
@@ -1046,20 +1049,6 @@ public class GMNotes : ResourceBase
 	// nothing lol
 }
 
-// added this thing in attempt to add a 1x1 tranparent image when sprite is null
-// but it doesn't work
-// don't remove it tho, since it is needed lol
-public Bitmap Base64ToBitmap()
-{
-    byte[] byteBuffer = Convert.FromBase64String("R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==");
-    using (MemoryStream memoryStream = new MemoryStream(byteBuffer))
-    {
-        var bmpReturn = (Bitmap) System.Drawing.Image.FromStream(memoryStream);
-        memoryStream.Close();
-        return bmpReturn;
-    }
-}
-
 // Thank you StackOverflow
 // https://stackoverflow.com/questions/6143642/way-to-have-string-replace-only-hit-whole-words/12603426
     public static String ReplaceWholeWord ( this String s, String word, String bywhat )
@@ -1267,7 +1256,7 @@ void DumpSprite(UndertaleSprite sprite)
 	// burned here
 	// try + catch to detect sprites with no image
 	// and to avoid an exception
-	Bitmap nullimg;
+	IMagickImage<byte> nullimg;
 	try {
 		if (sprite.Textures.Count > 0)
 		{
@@ -1287,9 +1276,10 @@ void DumpSprite(UndertaleSprite sprite)
 		string lPath = rootPath + spritePath + "layers/" + _compositeGuid + "/";
 		Directory.CreateDirectory(lPath);
 		
-		nullimg = new Bitmap(exportedSprite.width, exportedSprite.height);
-		TextureWorker.SaveImageToFile(rootPath + spritePath + _compositeGuid + ".png", nullimg, false);
-		TextureWorker.SaveImageToFile(lPath + lGuid + ".png", nullimg);
+		// goddamn it
+		nullimg = new MagickImage(MagickColors.White, exportedSprite.width, exportedSprite.height);
+		TextureWorker.SaveImageToFile(nullimg, rootPath + spritePath + _compositeGuid + ".png");
+		TextureWorker.SaveImageToFile(nullimg, lPath + lGuid + ".png");
 		
 		// Log Null Sprite
 		errorList.Add($"{exportedSprite.name} - Null Sprite: No associated Image found");
@@ -1413,7 +1403,7 @@ void DumpSprite(UndertaleSprite sprite)
 			// extract images
 			if (frame.Texture != null)
 			{
-				Bitmap img;
+				IMagickImage<byte> img;
 				try
 				{
 					// bail if it's SWF or SPINE
@@ -1430,10 +1420,10 @@ void DumpSprite(UndertaleSprite sprite)
 				catch
 				{
 					// give up immediately and make an empty image
-					img = new Bitmap(exportedSprite.width, exportedSprite.height);
+					img = new MagickImage(MagickColors.White, exportedSprite.width, exportedSprite.height);
 				}				
-				TextureWorker.SaveImageToFile(rootPath + spritePath + compositeGuid + ".png", img, false);
-				TextureWorker.SaveImageToFile(layersPath + layerGuid + ".png", img);
+				TextureWorker.SaveImageToFile(img, rootPath + spritePath + compositeGuid + ".png");
+				TextureWorker.SaveImageToFile(img, layersPath + layerGuid + ".png");
 			}
 
 			// add to frames
@@ -1494,13 +1484,7 @@ void DumpSprite(UndertaleSprite sprite)
 	if (tgrp.StartsWith("__YY__") && tgrp.Contains("_YYG_AUTO_GEN_TEX_GROUP_NAME_"))
 		exportedSprite.For3D = true;
 	else
-	{
-		exportedSprite.textureGroupId = new IdReference
-		{
-			name = tgrp,
-			path = $"texturegroups/{tgrp}"
-		};
-	}
+		exportedSprite.textureGroupId = sprtexGroups.GetValueOrDefault(sprite, defaultTexGroup);
 
 	// finish
 	doJson(exportedSprite, spritePath + $"{exportedSprite.name}.yy");
@@ -2551,7 +2535,7 @@ void DumpTileset(UndertaleBackground bg)
 	Directory.CreateDirectory(layersPath);
 
 	// extract images
-	Bitmap img;
+	IMagickImage<byte> img;
 	try
 	{
 		// fetch bitmap image
@@ -2560,20 +2544,18 @@ void DumpTileset(UndertaleBackground bg)
 	catch
 	{
 		// give up immediately and make an empty image
-		// note to loy: this never worked
-		//img = new Bitmap(exportedSprite.width, exportedSprite.height);
-		
-		// this is extremely bullshit and doesn't work, but it can't be null, so...yeah
-		img = Base64ToBitmap();
+		exportedSprite.width = 1;
+		exportedSprite.height = 1;
+		img = new MagickImage(MagickColors.White, exportedSprite.width, exportedSprite.height);
 	}
 	
 	// try + catch : working sprites will save to image, while null sprites will do nothing
 	try {
 	// save image if it sprite is not null
-	TextureWorker.SaveImageToFile(rootPath + spritePath + compositeGuid + ".png", img, false);
-	TextureWorker.SaveImageToFile(layersPath + layerGuid + ".png", img, false);
+	TextureWorker.SaveImageToFile(img, rootPath + spritePath + compositeGuid + ".png");
+	TextureWorker.SaveImageToFile(img, layersPath + layerGuid + ".png");
 	if (Data.IsGameMaker2())
-		TextureWorker.SaveImageToFile(rootPath + tilesetPath + "output_tileset.png", img, false);
+		TextureWorker.SaveImageToFile(img, rootPath + tilesetPath + "output_tileset.png");
 	}
 	// if it is null, do nothing
 	catch (Exception e) {}
@@ -2633,13 +2615,7 @@ void DumpTileset(UndertaleBackground bg)
 	if (tgrp.StartsWith("__YY__") && tgrp.Contains("_YYG_AUTO_GEN_TEX_GROUP_NAME_"))
 		exportedSprite.For3D = true;
 	else
-	{
-		exportedSprite.textureGroupId = new IdReference
-		{
-			name = tgrp,
-			path = $"texturegroups/{tgrp}"
-		};
-	}
+		exportedSprite.textureGroupId = tiletexGroups.GetValueOrDefault(bg, defaultTexGroup);
 
 	// finish
 	if (_APND.Checked)
@@ -4019,7 +3995,7 @@ void DumpSpriteGMS1(UndertaleSprite sprite)
 			// extract images
 			if (frame.Texture != null)
 			{
-				Bitmap img;
+				IMagickImage<byte> img;
 				try
 				{
 					// bail if it's SWF or SPINE
@@ -4036,9 +4012,9 @@ void DumpSpriteGMS1(UndertaleSprite sprite)
 				catch
 				{
 					// give up immediately and make an empty image
-					img = new Bitmap((int)sprite.Width, (int)sprite.Height);
+					img = new MagickImage(MagickColors.White, (int)sprite.Width, (int)sprite.Height);
 				}
-				TextureWorker.SaveImageToFile(rootPath + @$"sprites\images\{sprite.Name.Content}_{i}.png", img, false);
+				TextureWorker.SaveImageToFile(img, rootPath + @$"sprites\images\{sprite.Name.Content}_{i}.png");
 			}
 		}
 		writer.WriteEndElement();
@@ -4936,6 +4912,86 @@ if (!DUMP)
 StartProgressBarUpdater();
 Directory.CreateDirectory(rootPath);
 
+#region Check TextureGroups for Sprites and TileSets
+
+// Custom TextureGroups Detection, because previous method never works
+// thank you quantum, i literally could not think of a good way of doing this
+// but i feel like it could be done better
+
+// Default stuffs
+public var defaultTexGroup = new IdReference
+{
+	name = "Default",
+	path = "texturegroups/Default"
+};
+
+// Dictionaries that hold all the answsers
+public var sprtexGroups = new Dictionary<UndertaleSprite, IdReference>();
+public var tiletexGroups = new Dictionary<UndertaleBackground, IdReference>();
+
+// Check for TextureGroups, then check what Sprites are in them
+async Task CheckSpr_TextureGroup()
+{
+	// Loop through each TextureGroup
+	foreach (UndertaleTextureGroupInfo group in Data.TextureGroupInfo)
+	{
+		var sprTXreference = new IdReference
+		{
+			name = group.Name.Content,
+			path = "texturegroups/" + group.Name.Content
+		};
+		// Loop through ALL Sprites in the TextureGroup currently being checked
+		foreach (UndertaleResourceById<UndertaleSprite, UndertaleChunkSPRT> spr in group.Sprites)
+		{
+			// Add all Sprites in TextureGroup into the Dictionary List
+			sprtexGroups.TryAdd(spr.Resource, sprTXreference);
+		}
+		foreach (UndertaleResourceById<UndertaleSprite, UndertaleChunkSPRT> spr in group.SpineSprites)
+		{
+			sprtexGroups.TryAdd(spr.Resource, sprTXreference);
+		}
+		// adding TextureGroups to YYP
+		// we have to remove __yy__0fallbacktexture.png_yyg_auto_gen_tex_group_name_, as its not a valid one
+		try {
+			if ((group.Name.Content != "__yy__0fallbacktexture.png_yyg_auto_gen_tex_group_name_") && (group.Name.Content != "default"))
+				{ exportData.TextureGroups.Add(new GMTextureGroup { name = group.Name.Content }); }
+		} catch {}
+	}
+}
+
+// Check for TextureGroups, then check what TileSets are in them
+async Task CheckTile_TextureGroup()
+{
+	// Loop through each TextureGroup
+	foreach (UndertaleTextureGroupInfo group in Data.TextureGroupInfo)
+	{
+		var tileTXreference = new IdReference
+		{
+			name = group.Name.Content,
+			path = "texturegroups/" + group.Name.Content
+		};
+		// Loop through All TileSets in the TextureGroup currently being checked
+		foreach (UndertaleResourceById<UndertaleBackground, UndertaleChunkBGND> bg in group.Tilesets)
+		{
+			// Add all TileSets in TextureGroup into the Dictionary List
+			tiletexGroups.TryAdd(bg.Resource, tileTXreference);
+		}
+		
+		// adding TextureGroups to YYP
+		// if both sprites and tilesets are being decompiled, don't run
+		// because it should NOT duplicate them
+		if (!(SPRT && BGND))
+		{
+			try {
+				if ((group.Name.Content != "__yy__0fallbacktexture.png_yyg_auto_gen_tex_group_name_") && (group.Name.Content != "default"))
+					{ exportData.TextureGroups.Add(new GMTextureGroup { name = group.Name.Content }); }
+			} catch {}
+		}
+	}
+}
+
+#endregion
+
 #region Dump GMS2
 
 if (!GMS1)
@@ -5090,12 +5146,16 @@ if (!GMS1)
 	if (SPRT || CSTM.Count > 0)
 	{
 		SetupProgress("Exporting Sprites...", 0, Data.Sprites.Count);
+		// Custom Check
+		await CheckSpr_TextureGroup();
 		await DumpSprites();
 	}
 
 	if (BGND || CSTM.Count > 0)
 	{
 		SetupProgress((Data.IsGameMaker2() ? "Exporting TileSets..." : "Exporting Backgrounds..."), 0, Data.Backgrounds.Count);
+		// Custom Check
+		await CheckTile_TextureGroup();
 		await DumpTilesets();
 	}
 
@@ -5225,7 +5285,8 @@ else
 
 // cleanup
 await StopUpdater();
-worker.Cleanup();
+// Why change it from .Cleanup?
+worker.Dispose();
 HideProgressBar();
 
 // UTMTCE ONLY Enum Declarations

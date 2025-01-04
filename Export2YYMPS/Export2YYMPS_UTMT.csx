@@ -1,5 +1,5 @@
 ﻿/*
-	Export2YYMPS_UA.csx
+	Export2YYMPS_UTMT.csx
 		Original Decompiler by loypoll
 			Modified to a YYMPS Decompiler by burnedpopcorn180
 			
@@ -8,7 +8,7 @@
 	
 	This Script currently has issues, but works for the most part
 	
-	NOTE THAT THIS IS THE UNDERANALYZER VERSION
+	NOTE THAT THIS IS THE UTMT VERSION
 */
 
 using System;
@@ -29,26 +29,14 @@ using NAudio.Vorbis;
 using NAudio.Wave;
 using System.Xml;
 using System.Xml.Serialization;
-using Underanalyzer.Decompiler;
-using Underanalyzer;
+using UndertaleModLib.Decompiler;
 using UndertaleModTool;
-// For Enum Extraction
-using Underanalyzer.Decompiler.AST;
-using Underanalyzer.Decompiler.GameSpecific;
-using Underanalyzer.Decompiler.ControlFlow;
 using System.Collections.Generic;
 // for YYMPS Compression
 using System.IO.Compression;
 
 // PROMOTION!
-ScriptMessage("Welcome to Export2YYMPS.csx!\n\nOriginal GMS2 Decompiler made by loypoll\nYYMPS Exporter by burnedpopcorn180\n\n        ---UnderAnalyzer Version---");
-
-// DO NOT DECLARE ENUMS FOR THE LOVE OF ALL THAT IS HOLY
-if (Data.ToolInfo.DecompilerSettings.CreateEnumDeclarations == true) {
-	if (!ScriptQuestion("The 'Create Enum Declarations' Setting is ENABLED\nDecompiling with this Enabled will almost certainly break any code\n\nContinue Anyways?")) {
-		return;
-	}
-}
+ScriptMessage("Welcome to Export2YYMPS.csx!\n\nOriginal GMS2 Decompiler made by loypoll\nYYMPS Exporter by burnedpopcorn180\n\n        ---UTMT Version---");
 
 // configuration
 var ignore = new List<string>() // ignore certain assets from attempting to decompile
@@ -3839,8 +3827,7 @@ static string regexReplacer(this string s, int index, int length, string replace
 }
 
 // code decompiler, and turn any asset indices into equivalent asset names
-GlobalDecompileContext decompileContext = new(Data);
-Underanalyzer.Decompiler.IDecompileSettings decompilerSettings = Data.ToolInfo.DecompilerSettings;
+ThreadLocal<GlobalDecompileContext> DECOMPILE_CONTEXT = new ThreadLocal<GlobalDecompileContext>(() => new GlobalDecompileContext(Data, false));
 string decompileCode(UndertaleCode codeId)
 {
 	if (codeId == null)
@@ -3853,7 +3840,7 @@ string decompileCode(UndertaleCode codeId)
 	if (File.Exists($"{dataPath}code/{codeId.Name.Content}.gml"))
 		code = File.ReadAllText($"{dataPath}code/{codeId.Name.Content}.gml");
 	else
-		code = codeId != null ? new Underanalyzer.Decompiler.DecompileContext(decompileContext, codeId, decompilerSettings).DecompileToString(): "";
+		code = codeId != null ? Decompiler.Decompile(codeId, DECOMPILE_CONTEXT.Value): "";
 
 	// skip everything if tweak code isnt enabled
 	if (!TWEK)
