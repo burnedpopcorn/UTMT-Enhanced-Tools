@@ -48,6 +48,8 @@ using System.Reflection;
 using UndertaleModLib.Models;
 using UndertaleModLib.Util;
 using UndertaleModLib.Decompiler;
+// because of the new UTMT update
+using ImageMagick;
 
 // make sure that a data.win is loaded
 // aka ensure the user isn't retarded
@@ -126,7 +128,7 @@ await ExportShaders();
 GenerateProjectFile();
 
 // --------------- Export completed ---------------
-worker.Cleanup();
+worker.Dispose();
 HideProgressBar();
 
 if (errLog.Count > 0) // If Errors were Encountered during decompilation
