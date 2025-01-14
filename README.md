@@ -38,6 +38,11 @@ These are unnecessary, as the New GMS2 Decompiler has made these obsolete
 > 
 > So check them out
 
+> [!WARNING]
+> As of 1/14/25, some features in the UnderAnalyzer GMS2 Decompiling Script won't work with the official fork
+>
+> since it is mainly for my own custom build, which has more features
+
 ## Decompiling Pack v10
 
 These Scripts are all bundled into my Decompiling Pack: 
