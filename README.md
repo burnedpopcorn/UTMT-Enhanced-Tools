@@ -3,9 +3,9 @@ A Collection of Modified Scripts that aim to Enhance the output of the older Scr
 > All of these have been Modified by me to fix Issues or to Enhance them even further
 
 > [!IMPORTANT]
-> The Decompiling Pack in the Releases Tab is OUTDATED as of ```1/4/25```
+> The Decompiling Pack in the Releases Tab is MORE UP-TO-DATE THAN THIS CURRENT REPO as of ```1/14/25```
 >
-> Please update Export2GMS1FIXED_UTMTCE for the included UTMTCE install
+> Very funni
 
 Included are:
 
@@ -38,11 +38,11 @@ These are unnecessary, as the New GMS2 Decompiler has made these obsolete
 > 
 > So check them out
 
-## Decompiling Pack v9
+## Decompiling Pack v10
 
 These Scripts are all bundled into my Decompiling Pack: 
 
-https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/releases/tag/v9
+https://github.com/burnedpopcorn/UTMT-Enhanced-Tools/releases/tag/v10
 
 which contains everything you need to start decompiling ANY GameMaker Game, GMS1 or 2
 
